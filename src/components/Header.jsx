@@ -36,9 +36,10 @@ const useStyles = makeStyles((theme) => ({
     headerInput: {
         border: 'none',
         position: 'absolute',
-        right: 121,
-        width: 72,
+        right: 130,
+        width: '100%',
         fontSize: 16,
+        borderBottom: '1px dashed rgba(0, 0, 0, 0.23)',
         '&:focus': {
             outline: 'none',
         },
@@ -103,7 +104,7 @@ const Header = () => {
                         {openSearch ? (
                             <input
                                 type='text'
-                                placeholder='Search...'
+                                placeholder='Search'
                                 className={classes.headerInput}
                             />
                         ) : null}
