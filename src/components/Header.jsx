@@ -25,18 +25,31 @@ const useStyles = makeStyles((theme) => ({
     headerTopRight: {
         display: 'flex',
         alignItems: 'center',
+        position: 'relative',
     },
     searchIcon: {
         margin: '0 12px',
         color: 'rgba(0, 0, 0, 0.54)',
+        cursor: 'pointer',
+    },
+    headerInput: {
+        border: 'none',
+        position: 'absolute',
+        right: 121,
+        width: 72,
+        fontSize: 16,
+        '&:focus': {
+            outline: 'none',
+        },
     },
 }));
 
 const Header = () => {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
+    const [openSearch, setOpenSearch] = useState(false);
 
-    const handleClick = () => {
+    const handleClick = ({ openSearchInput }) => {
         setOpen(true);
     };
 
@@ -74,7 +87,17 @@ const Header = () => {
                         <Typography variant='h5'>Bart's Blog</Typography>
                     </div>
                     <div className={classes.headerTopRight}>
-                        <SearchIcon className={classes.searchIcon} />
+                        {openSearch ? (
+                            <input
+                                type='text'
+                                placeholder='Search...'
+                                className={classes.headerInput}
+                            />
+                        ) : null}
+                        <SearchIcon
+                            className={classes.searchIcon}
+                            onClick={() => setOpenSearch(!openSearch)}
+                        />
                         <Button size='small' variant='outlined'>
                             Sign Up
                         </Button>
