@@ -8,6 +8,7 @@ import {
 import SearchIcon from '@material-ui/icons/Search';
 import MuiAlert from '@material-ui/lab/Alert';
 import { useState } from 'react';
+import SignupButton from './SignupButton';
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant='filled' {...props} />;
@@ -42,6 +43,17 @@ const useStyles = makeStyles((theme) => ({
             outline: 'none',
         },
     },
+    modal: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    paper: {
+        backgroundColor: theme.palette.background.paper,
+        border: '2px solid #000',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
+    },
 }));
 
 const Header = () => {
@@ -49,6 +61,7 @@ const Header = () => {
     const [open, setOpen] = useState(false);
     const [openSearch, setOpenSearch] = useState(false);
 
+    // for search input
     const handleClick = ({ openSearchInput }) => {
         setOpen(true);
     };
@@ -98,9 +111,7 @@ const Header = () => {
                             className={classes.searchIcon}
                             onClick={() => setOpenSearch(!openSearch)}
                         />
-                        <Button size='small' variant='outlined'>
-                            Sign Up
-                        </Button>
+                        <SignupButton />
                     </div>
                 </div>
                 <div className={classes.headerBottom}></div>
