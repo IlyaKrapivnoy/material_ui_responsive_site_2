@@ -4,6 +4,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import { useState } from 'react';
 import { Button } from '@material-ui/core';
+import SignupForm from './SignupForm';
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -16,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
         border: '2px solid #000',
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
+        borderRadius: 20,
     },
 }));
 
@@ -50,10 +52,7 @@ export default function SignupButton() {
             >
                 <Fade in={open}>
                     <div className={classes.paper}>
-                        <h2 id='transition-modal-title'>Transition modal</h2>
-                        <p id='transition-modal-description'>
-                            react-transition-group animates me.
-                        </p>
+                        <SignupForm />
                     </div>
                 </Fade>
             </Modal>
