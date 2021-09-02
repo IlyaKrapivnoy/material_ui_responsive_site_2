@@ -1,4 +1,5 @@
 import Banner from './components/Banner';
+import Cards from './components/Cards';
 import Header from './components/Header';
 
 let menuList = [
@@ -49,6 +50,7 @@ function App() {
         <div>
             <Header menuList={menuList} />
             <Banner />
+            <Cards />
         </div>
     );
 }
