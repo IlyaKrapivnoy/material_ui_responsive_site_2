@@ -14,14 +14,24 @@ const useStyles = makeStyles((theme) => ({
         width: '50%',
         padding: 48,
         color: '#fff',
+        [theme.breakpoints.down('sm')]: {
+            width: '80%',
+            padding: 30,
+        },
     },
     bannerTitle: {
         marginBottom: 16,
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '30px',
+        },
     },
     bannerSubtitle: {
         fontSize: 24,
         marginBottom: 24,
         lineHeight: '32px',
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '18px',
+        },
     },
     bannerLinkText: {
         color: '#1976D2',
