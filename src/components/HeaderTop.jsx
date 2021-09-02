@@ -3,6 +3,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import MuiAlert from '@material-ui/lab/Alert';
 import { useState } from 'react';
 import SignupButton from './SignupButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import CloseIcon from '@material-ui/icons/Close';
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant='filled' {...props} />;
@@ -16,6 +18,19 @@ const useStyles = makeStyles((theme) => ({
         height: 50,
         borderBottom: '1px solid rgba(0, 0, 0, 0.23)',
         padding: '6px 24px',
+    },
+    headerTopLeft: {
+        display: 'flex',
+        alignItems: 'center',
+    },
+    headerTopLeftIcon: {
+        marginRight: 10,
+        color: 'rgba(0, 0, 0, 0.54)',
+        cursor: 'pointer',
+    },
+    menuLeftCloseIcon: {
+        color: 'rgba(0, 0, 0, 0.54)',
+        cursor: 'pointer',
     },
     headerTopRight: {
         display: 'flex',
@@ -49,9 +64,26 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
     },
+    mobileMenu: {
+        position: 'fixed',
+        background: '#ccc',
+        width: 240,
+        top: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 1,
+    },
+    menuMask: {
+        background: 'rgba(0,0,0,.7)',
+        position: 'fixed',
+        top: 0,
+        right: 0,
+        left: 0,
+        bottom: 0,
+    },
 }));
 
-const HeaderTop = () => {
+const HeaderTop = ({ preventDefault }) => {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     const [openSearch, setOpenSearch] = useState(false);
@@ -68,10 +100,43 @@ const HeaderTop = () => {
 
         setOpen(false);
     };
+    // for mobile menu
+    const [showMenu, setShowMenu] = useState(false);
+
+    let menu;
+    let menuMask;
+
+    if (showMenu) {
+        menu = (
+            <div className={classes.mobileMenu}>
+                <div className='menuLeft'>
+                    <CloseIcon
+                        onClick={() => setShowMenu(false)}
+                        className={classes.menuLeftCloseIcon}
+                    />
+                </div>
+                <div className='menuFull'>This is menu</div>
+            </div>
+        );
+
+        menuMask = (
+            <div
+                className={classes.menuMask}
+                onClick={() => setShowMenu(false)}
+            ></div>
+        );
+    }
 
     return (
         <div className={classes.headerTop}>
-            <div className='headerTopLeft'>
+            <div className={classes.headerTopLeft}>
+                <MenuIcon
+                    onClick={() => setShowMenu(!showMenu)}
+                    className={classes.headerTopLeftIcon}
+                />
+                {menuMask}
+                {menu}
+
                 <Button size='small' onClick={handleClick}>
                     Subscribe
                 </Button>
