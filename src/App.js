@@ -1,3 +1,4 @@
+import Banner from './components/Banner';
 import Header from './components/Header';
 
 let menuList = [
@@ -47,6 +48,7 @@ function App() {
     return (
         <div>
             <Header menuList={menuList} />
+            <Banner />
         </div>
     );
 }
