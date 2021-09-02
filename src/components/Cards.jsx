@@ -13,12 +13,20 @@ const useStyles = makeStyles((theme) => ({
     cards: {
         display: 'flex',
         justifyContent: 'space-between',
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column',
+            alignItems: 'center',
+        },
     },
     card: {
         display: 'flex',
         margin: '16px 16px 16px 0',
         width: '50%',
         '&:last-child': { marginRight: 0 },
+        [theme.breakpoints.down('sm')]: {
+            width: '100%',
+            margin: '16px 0',
+        },
     },
     details: {
         display: 'flex',
