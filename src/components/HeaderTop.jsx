@@ -34,10 +34,6 @@ const useStyles = makeStyles((theme) => ({
         color: 'rgba(0, 0, 0, 0.54)',
         cursor: 'pointer',
     },
-    menuLeftCloseIcon: {
-        color: 'rgba(0, 0, 0, 0.54)',
-        cursor: 'pointer',
-    },
     headerTopRight: {
         display: 'flex',
         alignItems: 'center',
@@ -87,6 +83,22 @@ const useStyles = makeStyles((theme) => ({
         left: 0,
         bottom: 0,
     },
+    mobileMenuList: {
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    mobileMenuItem: {
+        padding: 10,
+        display: 'flex',
+        justifyContent: 'flex-end',
+        marginRight: 30,
+        color: 'rgba(0, 0, 0, 0.54)',
+        fontSize: 18,
+    },
+    menuLeftCloseIcon: {
+        padding: '15px 0 0 15px',
+        cursor: 'pointer',
+    },
 }));
 
 const HeaderTop = ({ preventDefault, menuList }) => {
@@ -121,12 +133,12 @@ const HeaderTop = ({ preventDefault, menuList }) => {
                         className={classes.menuLeftCloseIcon}
                     />
                 </div>
-                <div className='menuFull'>
+                <div className={classes.mobileMenuList}>
                     {menuList.map((item) => (
                         <Link
                             href='#'
                             onClick={preventDefault}
-                            className={classes.headerBottomItem}
+                            className={classes.mobileMenuItem}
                         >
                             {item.menuItem}
                         </Link>
