@@ -5,6 +5,9 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'space-between',
         padding: '0 12px',
+        [theme.breakpoints.down('sm')]: {
+            display: 'none',
+        },
     },
     headerBottomItem: {
         padding: 16,

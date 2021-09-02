@@ -24,25 +24,44 @@ const useStyles = makeStyles((theme) => ({
         height: 50,
         borderBottom: '1px solid rgba(0, 0, 0, 0.23)',
         padding: '6px 24px',
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            height: '210px',
+        },
     },
     headerTopLeft: {
         display: 'flex',
         alignItems: 'center',
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+        },
     },
     headerTopLeftIcon: {
-        marginRight: 10,
+        marginBottom: 12,
         color: 'rgba(0, 0, 0, 0.54)',
         cursor: 'pointer',
+        [theme.breakpoints.up('md')]: {
+            display: 'none',
+        },
     },
     headerTopRight: {
         display: 'flex',
         alignItems: 'center',
         position: 'relative',
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column-reverse',
+            justifyContent: 'space-between',
+        },
     },
     searchIcon: {
         margin: '0 12px',
         color: 'rgba(0, 0, 0, 0.54)',
         cursor: 'pointer',
+        [theme.breakpoints.down('sm')]: {
+            marginTop: 12,
+        },
     },
     headerInput: {
         border: 'none',
@@ -53,6 +72,9 @@ const useStyles = makeStyles((theme) => ({
         borderBottom: '1px dashed rgba(0, 0, 0, 0.23)',
         '&:focus': {
             outline: 'none',
+        },
+        [theme.breakpoints.down('sm')]: {
+            right: 60,
         },
     },
     modal: {
