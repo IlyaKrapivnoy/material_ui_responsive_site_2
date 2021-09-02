@@ -1,4 +1,10 @@
-import { Button, makeStyles, Snackbar, Typography } from '@material-ui/core';
+import {
+    Button,
+    Link,
+    makeStyles,
+    Snackbar,
+    Typography,
+} from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import MuiAlert from '@material-ui/lab/Alert';
 import { useState } from 'react';
@@ -83,7 +89,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const HeaderTop = ({ preventDefault }) => {
+const HeaderTop = ({ preventDefault, menuList }) => {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     const [openSearch, setOpenSearch] = useState(false);
@@ -115,7 +121,17 @@ const HeaderTop = ({ preventDefault }) => {
                         className={classes.menuLeftCloseIcon}
                     />
                 </div>
-                <div className='menuFull'>This is menu</div>
+                <div className='menuFull'>
+                    {menuList.map((item) => (
+                        <Link
+                            href='#'
+                            onClick={preventDefault}
+                            className={classes.headerBottomItem}
+                        >
+                            {item.menuItem}
+                        </Link>
+                    ))}
+                </div>
             </div>
         );
 

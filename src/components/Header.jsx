@@ -2,12 +2,12 @@ import { Container } from '@material-ui/core';
 import HeaderTop from './HeaderTop';
 import HeaderBottom from './HeaderBottom';
 
-const Header = () => {
+const Header = ({ menuList }) => {
     return (
         <Container maxWidth='lg'>
             <div className='header'>
-                <HeaderTop />
-                <HeaderBottom />
+                <HeaderTop menuList={menuList} />
+                <HeaderBottom menuList={menuList} />
             </div>
         </Container>
     );
