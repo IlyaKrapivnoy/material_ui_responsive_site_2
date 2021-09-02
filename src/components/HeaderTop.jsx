@@ -96,6 +96,7 @@ const useStyles = makeStyles((theme) => ({
         right: 0,
         bottom: 0,
         zIndex: 1,
+        overflowY: 'scroll',
     },
     menuMask: {
         background: 'rgba(0,0,0,.7)',
