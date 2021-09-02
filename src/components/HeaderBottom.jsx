@@ -13,82 +13,64 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+let menuList = [
+    {
+        id: 1,
+        menuItem: 'Technology',
+    },
+    {
+        id: 2,
+        menuItem: 'Design',
+    },
+    {
+        id: 3,
+        menuItem: 'Culture',
+    },
+    {
+        id: 4,
+        menuItem: 'Business',
+    },
+    {
+        id: 5,
+        menuItem: 'Politics',
+    },
+    {
+        id: 6,
+        menuItem: 'Opinion',
+    },
+    {
+        id: 7,
+        menuItem: 'Science',
+    },
+    {
+        id: 8,
+        menuItem: 'Health',
+    },
+    {
+        id: 9,
+        menuItem: 'Style',
+    },
+    {
+        id: 10,
+        menuItem: 'Travel',
+    },
+];
+
 const HeaderBottom = () => {
     const classes = useStyles();
     const preventDefault = (event) => event.preventDefault();
 
     return (
         <div className={classes.headerBottom}>
-            <Link
-                href='#'
-                onClick={preventDefault}
-                className={classes.headerBottomItem}
-            >
-                Technology
-            </Link>
-            <Link
-                href='#'
-                onClick={preventDefault}
-                className={classes.headerBottomItem}
-            >
-                Design
-            </Link>
-            <Link
-                href='#'
-                onClick={preventDefault}
-                className={classes.headerBottomItem}
-            >
-                Culture
-            </Link>
-            <Link
-                href='#'
-                onClick={preventDefault}
-                className={classes.headerBottomItem}
-            >
-                Business
-            </Link>
-            <Link
-                href='#'
-                onClick={preventDefault}
-                className={classes.headerBottomItem}
-            >
-                Politics
-            </Link>
-            <Link
-                href='#'
-                onClick={preventDefault}
-                className={classes.headerBottomItem}
-            >
-                Opinion
-            </Link>
-            <Link
-                href='#'
-                onClick={preventDefault}
-                className={classes.headerBottomItem}
-            >
-                Science
-            </Link>
-            <Link
-                href='#'
-                onClick={preventDefault}
-                className={classes.headerBottomItem}
-            >
-                Health
-            </Link>
-            <Link
-                href='#'
-                onClick={preventDefault}
-                className={classes.headerBottomItem}
-            >
-                Style
-            </Link>
-            <Link
-                href='#'
-                onClick={preventDefault}
-                className={classes.headerBottomItem}
-            >
-                Travel
-            </Link>
+            {menuList.map((item) => (
+                <Link
+                    href='#'
+                    onClick={preventDefault}
+                    className={classes.headerBottomItem}
+                >
+                    {item.menuItem}
+                </Link>
+            ))}
         </div>
     );
 };
