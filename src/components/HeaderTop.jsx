@@ -1,8 +1,16 @@
-import { Button, makeStyles, Snackbar, Typography } from '@material-ui/core';
+import {
+    Button,
+    Link,
+    makeStyles,
+    Snackbar,
+    Typography,
+} from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import MuiAlert from '@material-ui/lab/Alert';
 import { useState } from 'react';
 import SignupButton from './SignupButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import CloseIcon from '@material-ui/icons/Close';
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant='filled' {...props} />;
@@ -16,16 +24,44 @@ const useStyles = makeStyles((theme) => ({
         height: 50,
         borderBottom: '1px solid rgba(0, 0, 0, 0.23)',
         padding: '6px 24px',
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            height: '210px',
+        },
+    },
+    headerTopLeft: {
+        display: 'flex',
+        alignItems: 'center',
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+        },
+    },
+    headerTopLeftIcon: {
+        marginBottom: 12,
+        color: 'rgba(0, 0, 0, 0.54)',
+        cursor: 'pointer',
+        [theme.breakpoints.up('md')]: {
+            display: 'none',
+        },
     },
     headerTopRight: {
         display: 'flex',
         alignItems: 'center',
         position: 'relative',
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column-reverse',
+            justifyContent: 'space-between',
+        },
     },
     searchIcon: {
         margin: '0 12px',
         color: 'rgba(0, 0, 0, 0.54)',
         cursor: 'pointer',
+        [theme.breakpoints.down('sm')]: {
+            marginTop: 12,
+        },
     },
     headerInput: {
         border: 'none',
@@ -36,6 +72,9 @@ const useStyles = makeStyles((theme) => ({
         borderBottom: '1px dashed rgba(0, 0, 0, 0.23)',
         '&:focus': {
             outline: 'none',
+        },
+        [theme.breakpoints.down('sm')]: {
+            right: 60,
         },
     },
     modal: {
@@ -49,9 +88,42 @@ const useStyles = makeStyles((theme) => ({
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
     },
+    mobileMenu: {
+        position: 'fixed',
+        background: '#ccc',
+        width: 240,
+        top: 0,
+        right: 0,
+        bottom: 0,
+        zIndex: 1,
+    },
+    menuMask: {
+        background: 'rgba(0,0,0,.7)',
+        position: 'fixed',
+        top: 0,
+        right: 0,
+        left: 0,
+        bottom: 0,
+    },
+    mobileMenuList: {
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    mobileMenuItem: {
+        padding: 10,
+        display: 'flex',
+        justifyContent: 'flex-end',
+        marginRight: 30,
+        color: 'rgba(0, 0, 0, 0.54)',
+        fontSize: 18,
+    },
+    menuLeftCloseIcon: {
+        padding: '15px 0 0 15px',
+        cursor: 'pointer',
+    },
 }));
 
-const HeaderTop = () => {
+const HeaderTop = ({ preventDefault, menuList }) => {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     const [openSearch, setOpenSearch] = useState(false);
@@ -68,10 +140,53 @@ const HeaderTop = () => {
 
         setOpen(false);
     };
+    // for mobile menu
+    const [showMenu, setShowMenu] = useState(false);
+
+    let menu;
+    let menuMask;
+
+    if (showMenu) {
+        menu = (
+            <div className={classes.mobileMenu}>
+                <div className='menuLeft'>
+                    <CloseIcon
+                        onClick={() => setShowMenu(false)}
+                        className={classes.menuLeftCloseIcon}
+                    />
+                </div>
+                <div className={classes.mobileMenuList}>
+                    {menuList.map((item) => (
+                        <Link
+                            href='#'
+                            onClick={preventDefault}
+                            className={classes.mobileMenuItem}
+                        >
+                            {item.menuItem}
+                        </Link>
+                    ))}
+                </div>
+            </div>
+        );
+
+        menuMask = (
+            <div
+                className={classes.menuMask}
+                onClick={() => setShowMenu(false)}
+            ></div>
+        );
+    }
 
     return (
         <div className={classes.headerTop}>
-            <div className='headerTopLeft'>
+            <div className={classes.headerTopLeft}>
+                <MenuIcon
+                    onClick={() => setShowMenu(!showMenu)}
+                    className={classes.headerTopLeftIcon}
+                />
+                {menuMask}
+                {menu}
+
                 <Button size='small' onClick={handleClick}>
                     Subscribe
                 </Button>
