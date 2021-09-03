@@ -2,7 +2,11 @@ import { Container, Grid, makeStyles } from '@material-ui/core';
 import Feed from './Feed';
 import Sidebar from './Sidebar';
 
-const useStyles = makeStyles((theme) => ({}));
+const useStyles = makeStyles((theme) => ({
+    mainContent: {
+        margin: '0 -20px',
+    },
+}));
 
 const MainContent = ({ posts }) => {
     const classes = useStyles();
@@ -10,14 +14,16 @@ const MainContent = ({ posts }) => {
     return (
         <>
             <Container maxWidth='lg'>
-                <Grid container>
-                    <Grid item xs={9}>
-                        <Feed className={classes.feed} posts={posts} />
+                <div className={classes.mainContent}>
+                    <Grid container>
+                        <Grid item xs={8}>
+                            <Feed className={classes.feed} posts={posts} />
+                        </Grid>
+                        <Grid item xs={4}>
+                            <Sidebar className={classes.sidebar} />
+                        </Grid>
                     </Grid>
-                    <Grid item xs={3}>
-                        <Sidebar className={classes.sidebar} />
-                    </Grid>
-                </Grid>
+                </div>
             </Container>
         </>
     );

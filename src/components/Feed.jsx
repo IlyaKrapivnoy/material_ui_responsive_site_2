@@ -1,6 +1,9 @@
 import { makeStyles, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
+    feed: {
+        padding: 20,
+    },
     feedTitle: {
         borderBottom: '1px solid rgba(0, 0, 0, 0.23)',
         paddingBottom: 6,
@@ -24,7 +27,7 @@ const Feed = ({ posts }) => {
     const classes = useStyles();
 
     return (
-        <>
+        <div className={classes.feed}>
             <Typography variant='h6' className={classes.feedTitle}>
                 From the firehose
             </Typography>
@@ -44,7 +47,7 @@ const Feed = ({ posts }) => {
                     </Typography>
                 </div>
             ))}
-        </>
+        </div>
     );
 };
 
