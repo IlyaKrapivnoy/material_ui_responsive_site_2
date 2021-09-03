@@ -36,12 +36,10 @@ const useStyles = makeStyles((theme) => ({
         flex: '1 0 auto',
     },
     coverCard1: {
-        width: 151,
         backgroundImage: `url(${CardImage1})`,
         width: '40%',
     },
     coverCard2: {
-        width: 151,
         backgroundImage: `url(${CardImage2})`,
         width: '40%',
     },
