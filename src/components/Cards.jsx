@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     cards: {
         display: 'flex',
         justifyContent: 'space-between',
+        marginBottom: 26,
         [theme.breakpoints.down('sm')]: {
             flexDirection: 'column',
             alignItems: 'center',

@@ -1,10 +1,10 @@
-import { Container, Grid, makeStyles, Typography } from '@material-ui/core';
+import { Container, Grid, makeStyles } from '@material-ui/core';
 import Feed from './Feed';
 import Sidebar from './Sidebar';
 
 const useStyles = makeStyles((theme) => ({}));
 
-const MainContent = () => {
+const MainContent = ({ posts }) => {
     const classes = useStyles();
 
     return (
@@ -12,7 +12,7 @@ const MainContent = () => {
             <Container maxWidth='lg'>
                 <Grid container>
                     <Grid item xs={9}>
-                        <Feed className={classes.feed} />
+                        <Feed className={classes.feed} posts={posts} />
                     </Grid>
                     <Grid item xs={3}>
                         <Sidebar className={classes.sidebar} />
