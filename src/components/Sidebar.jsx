@@ -1,4 +1,4 @@
-import { makeStyles, Paper, Typography } from '@material-ui/core';
+import { Link, makeStyles, Paper, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     sidebar: {
@@ -15,10 +15,25 @@ const useStyles = makeStyles((theme) => ({
         fontSize: 16,
         lineHeight: '22px',
     },
+    archives: {
+        margin: '32px 0',
+    },
+    archiveTitle: {
+        marginBottom: 8,
+    },
+    linksList: {
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    linksListItem: {
+        padding: '3px 0',
+        color: '#1976d2',
+    },
 }));
 
-const Sidebar = () => {
+const Sidebar = ({ links }) => {
     const classes = useStyles();
+    const preventDefault = (event) => event.preventDefault();
 
     return (
         <div className={classes.sidebar}>
@@ -32,6 +47,23 @@ const Sidebar = () => {
                     bibendum nulla sed consectetur.
                 </Typography>
             </Paper>
+
+            <div className={classes.archives}>
+                <Typography variant='h6' className={classes.archiveTitle}>
+                    Archives
+                </Typography>
+                {links.map((link) => (
+                    <Typography className={classes.linksList}>
+                        <Link
+                            href='#'
+                            onClick={preventDefault}
+                            className={classes.linksListItem}
+                        >
+                            {link.month} {link.year}
+                        </Link>
+                    </Typography>
+                ))}
+            </div>
         </div>
     );
 };
