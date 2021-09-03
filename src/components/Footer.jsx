@@ -7,12 +7,18 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         flexDirection: 'column',
         padding: '40px 0',
+        [theme.breakpoints.down('xs')]: {
+            padding: '10px 0 20px',
+        },
     },
     footerTitle: {
         marginBottom: 10,
     },
     footerDescr: {
         color: 'rgba(0, 0, 0, 0.54)',
+        [theme.breakpoints.down('xs')]: {
+            display: 'none',
+        },
     },
     footerCopyright: {
         color: 'rgba(0, 0, 0, 0.54)',

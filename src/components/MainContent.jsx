@@ -16,10 +16,10 @@ const MainContent = ({ posts, links }) => {
             <Container maxWidth='lg'>
                 <div className={classes.mainContent}>
                     <Grid container>
-                        <Grid item xs={8}>
+                        <Grid item xs={12} md={8}>
                             <Feed className={classes.feed} posts={posts} />
                         </Grid>
-                        <Grid item xs={4}>
+                        <Grid item xs={12} md={4}>
                             <Sidebar
                                 className={classes.sidebar}
                                 links={links}

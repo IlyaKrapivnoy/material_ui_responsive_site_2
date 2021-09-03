@@ -6,10 +6,25 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 const useStyles = makeStyles((theme) => ({
     sidebar: {
         padding: 20,
+        [theme.breakpoints.down('sm')]: {
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+        },
+        [theme.breakpoints.down('xs')]: {
+            flexDirection: 'column',
+            alignItems: 'center',
+        },
     },
     paper: {
         background: '#eee',
         padding: 16,
+        [theme.breakpoints.down('sm')]: {
+            width: '45%',
+        },
+        [theme.breakpoints.down('xs')]: {
+            width: '90%',
+        },
     },
     paperTitle: {
         marginBottom: 10,
@@ -20,6 +35,16 @@ const useStyles = makeStyles((theme) => ({
     },
     archives: {
         margin: '32px 0',
+        [theme.breakpoints.down('xs')]: {
+            margin: '22px 0',
+        },
+    },
+    archiveList: {
+        [theme.breakpoints.down('sm')]: {
+            height: 120,
+            minWidth: 140,
+            overflowY: 'scroll',
+        },
     },
     sidebarTitle: {
         marginBottom: 8,
@@ -31,6 +56,14 @@ const useStyles = makeStyles((theme) => ({
     linksListItem: {
         padding: '3px 0',
         color: '#1976d2',
+    },
+    socials: {
+        [theme.breakpoints.down('sm')]: {
+            margin: '32px 0',
+        },
+        [theme.breakpoints.down('xs')]: {
+            margin: '22px 0',
+        },
     },
     socialList: {
         display: 'flex',
@@ -44,6 +77,18 @@ const useStyles = makeStyles((theme) => ({
     },
     socialIcon: {
         marginRight: 10,
+    },
+    '@global': {
+        '*::-webkit-scrollbar': {
+            width: '4px',
+        },
+        '*::-webkit-scrollbar-track': {
+            '-webkit-box-shadow': 'inset 0 0 6px rgba(0,0,0,0.00)',
+        },
+        '*::-webkit-scrollbar-thumb': {
+            backgroundColor: '#1976d2',
+            outline: '3px solid #dadada',
+        },
     },
 }));
 
@@ -68,17 +113,19 @@ const Sidebar = ({ links }) => {
                 <Typography variant='h6' className={classes.sidebarTitle}>
                     Archives
                 </Typography>
-                {links.map((link) => (
-                    <Typography className={classes.linksList}>
-                        <Link
-                            href='#'
-                            onClick={preventDefault}
-                            className={classes.linksListItem}
-                        >
-                            {link.month} {link.year}
-                        </Link>
-                    </Typography>
-                ))}
+                <div className={classes.archiveList}>
+                    {links.map((link) => (
+                        <Typography className={classes.linksList}>
+                            <Link
+                                href='#'
+                                onClick={preventDefault}
+                                className={classes.linksListItem}
+                            >
+                                {link.month} {link.year}
+                            </Link>
+                        </Typography>
+                    ))}
+                </div>
             </div>
 
             <div className={classes.socials}>

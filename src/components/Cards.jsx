@@ -8,6 +8,7 @@ import {
 } from '@material-ui/core';
 import CardImage1 from '../images/card1.jpeg';
 import CardImage2 from '../images/card2.jpeg';
+import SmallCard from '../images/smallCard.jpeg';
 
 const useStyles = makeStyles((theme) => ({
     cards: {
@@ -28,6 +29,10 @@ const useStyles = makeStyles((theme) => ({
             width: '100%',
             margin: '16px 0',
         },
+        [theme.breakpoints.down('xs')]: {
+            backgroundImage: `url(${SmallCard})`,
+            backgroundPosition: 'center',
+        },
     },
     details: {
         display: 'flex',
@@ -39,10 +44,16 @@ const useStyles = makeStyles((theme) => ({
     coverCard1: {
         backgroundImage: `url(${CardImage1})`,
         width: '40%',
+        [theme.breakpoints.down('xs')]: {
+            backgroundImage: 'none',
+        },
     },
     coverCard2: {
         backgroundImage: `url(${CardImage2})`,
         width: '40%',
+        [theme.breakpoints.down('xs')]: {
+            backgroundImage: 'none',
+        },
     },
     cardLink: {
         color: '#1976D2',
