@@ -1,4 +1,7 @@
 import { Link, makeStyles, Paper, Typography } from '@material-ui/core';
+import GitHubIcon from '@material-ui/icons/GitHub';
+import TwitterIcon from '@material-ui/icons/Twitter';
+import FacebookIcon from '@material-ui/icons/Facebook';
 
 const useStyles = makeStyles((theme) => ({
     sidebar: {
@@ -18,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     archives: {
         margin: '32px 0',
     },
-    archiveTitle: {
+    sidebarTitle: {
         marginBottom: 8,
     },
     linksList: {
@@ -28,6 +31,19 @@ const useStyles = makeStyles((theme) => ({
     linksListItem: {
         padding: '3px 0',
         color: '#1976d2',
+    },
+    socialList: {
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    socialListItem: {
+        display: 'flex',
+        alignItems: 'center',
+        padding: '4px 0',
+        color: '#1976d2',
+    },
+    socialIcon: {
+        marginRight: 10,
     },
 }));
 
@@ -49,7 +65,7 @@ const Sidebar = ({ links }) => {
             </Paper>
 
             <div className={classes.archives}>
-                <Typography variant='h6' className={classes.archiveTitle}>
+                <Typography variant='h6' className={classes.sidebarTitle}>
                     Archives
                 </Typography>
                 {links.map((link) => (
@@ -63,6 +79,38 @@ const Sidebar = ({ links }) => {
                         </Link>
                     </Typography>
                 ))}
+            </div>
+
+            <div className={classes.socials}>
+                <Typography variant='h6' className={classes.sidebarTitle}>
+                    Socials
+                </Typography>
+                <Typography className={classes.socialList}>
+                    <Link
+                        href='#'
+                        onClick={preventDefault}
+                        className={classes.socialListItem}
+                    >
+                        <GitHubIcon className={classes.socialIcon} />
+                        GitHub
+                    </Link>
+                    <Link
+                        href='#'
+                        onClick={preventDefault}
+                        className={classes.socialListItem}
+                    >
+                        <TwitterIcon className={classes.socialIcon} />
+                        Twitter
+                    </Link>
+                    <Link
+                        href='#'
+                        onClick={preventDefault}
+                        className={classes.socialListItem}
+                    >
+                        <FacebookIcon className={classes.socialIcon} />
+                        Facebook
+                    </Link>
+                </Typography>
             </div>
         </div>
     );
