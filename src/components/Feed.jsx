@@ -1,7 +1,8 @@
-import { CircularProgress, makeStyles, Typography } from '@material-ui/core';
+import { makeStyles, Typography } from '@material-ui/core';
 import { posts } from '../dummyData';
 import ReactPaginate from 'react-paginate';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
     feed: {
@@ -30,26 +31,29 @@ const useStyles = makeStyles((theme) => ({
     postAuthor: {
         color: '#1976d2',
     },
-    loader: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100wv',
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
 }));
 
 const Feed = () => {
+    const [feedPosts, setFeedPosts] = useState([]);
+    useEffect(() => {
+        axios
+            .get('https://jsonplaceholder.typicode.com/posts')
+            .then((res) => {
+                console.log(res);
+                setFeedPosts(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }, []);
+
     const classes = useStyles();
     const [pageNumber, setPageNumber] = useState(0);
 
     const postsPerPage = 7;
     const pagesVisited = pageNumber * postsPerPage;
 
-    const displayPosts = posts
+    const displayUsers = feedPosts
         .slice(pagesVisited, pagesVisited + postsPerPage)
         .map((post) => {
             return (
@@ -64,7 +68,7 @@ const Feed = () => {
                         </span>
                     </Typography>
                     <Typography variant='body2' className={classes.postText}>
-                        {post.postText}
+                        {post.body}
                     </Typography>
                 </div>
             );
@@ -76,21 +80,13 @@ const Feed = () => {
         setPageNumber(selected);
     };
 
-    if (posts.length === 0) {
-        return (
-            <div className='loader'>
-                <CircularProgress />
-            </div>
-        );
-    }
-
     return (
         <div className={classes.feed}>
             <Typography variant='h6' className={classes.feedTitle}>
                 From the firehose
             </Typography>
             <div className={classes.feedWrapper}>
-                <div className={classes.feedPosts}>{displayPosts}</div>
+                <div className={classes.feedPosts}>{displayUsers}</div>
                 <div className={classes.feedPagination}>
                     <ReactPaginate
                         previousLabel={'Prev'}
