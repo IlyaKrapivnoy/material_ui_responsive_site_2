@@ -1,4 +1,4 @@
-import { makeStyles, Typography } from '@material-ui/core';
+import { CircularProgress, makeStyles, Typography } from '@material-ui/core';
 import { posts } from '../dummyData';
 import ReactPaginate from 'react-paginate';
 import { useState } from 'react';
@@ -30,6 +30,16 @@ const useStyles = makeStyles((theme) => ({
     postAuthor: {
         color: '#1976d2',
     },
+    loader: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        width: '100wv',
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
 }));
 
 const Feed = () => {
@@ -39,7 +49,7 @@ const Feed = () => {
     const postsPerPage = 7;
     const pagesVisited = pageNumber * postsPerPage;
 
-    const displayUsers = posts
+    const displayPosts = posts
         .slice(pagesVisited, pagesVisited + postsPerPage)
         .map((post) => {
             return (
@@ -66,13 +76,21 @@ const Feed = () => {
         setPageNumber(selected);
     };
 
+    if (posts.length === 0) {
+        return (
+            <div className='loader'>
+                <CircularProgress />
+            </div>
+        );
+    }
+
     return (
         <div className={classes.feed}>
             <Typography variant='h6' className={classes.feedTitle}>
                 From the firehose
             </Typography>
             <div className={classes.feedWrapper}>
-                <div className={classes.feedPosts}>{displayUsers}</div>
+                <div className={classes.feedPosts}>{displayPosts}</div>
                 <div className={classes.feedPagination}>
                     <ReactPaginate
                         previousLabel={'Prev'}
