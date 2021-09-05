@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const MainContent = ({ posts, links }) => {
+const MainContent = () => {
     const classes = useStyles();
 
     return (
@@ -17,13 +17,10 @@ const MainContent = ({ posts, links }) => {
                 <div className={classes.mainContent}>
                     <Grid container>
                         <Grid item xs={12} md={8}>
-                            <Feed className={classes.feed} posts={posts} />
+                            <Feed className={classes.feed} />
                         </Grid>
                         <Grid item xs={12} md={4}>
-                            <Sidebar
-                                className={classes.sidebar}
-                                links={links}
-                            />
+                            <Sidebar className={classes.sidebar} />
                         </Grid>
                     </Grid>
                 </div>
