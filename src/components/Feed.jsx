@@ -1,4 +1,5 @@
 import { makeStyles, Typography } from '@material-ui/core';
+import { posts } from '../dummyData';
 
 const useStyles = makeStyles((theme) => ({
     feed: {
@@ -23,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const Feed = ({ posts }) => {
+const Feed = () => {
     const classes = useStyles();
 
     return (
