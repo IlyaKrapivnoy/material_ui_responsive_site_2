@@ -14,9 +14,18 @@ const useStyles = makeStyles((theme) => ({
         color: '#181818',
         fontSize: 14,
     },
+    login: {
+        padding: 16,
+        color: '#181818',
+        fontSize: 14,
+        fontWeight: 800,
+        cursor: 'pointer',
+    },
 }));
 
 const HeaderBottom = ({ menuList }) => {
+    const user = true;
+
     const classes = useStyles();
     const preventDefault = (event) => event.preventDefault();
 
@@ -31,6 +40,12 @@ const HeaderBottom = ({ menuList }) => {
                     {item.menuItem}
                 </Link>
             ))}
+
+            {user ? (
+                <div className={classes.login}>LOG OUT</div>
+            ) : (
+                <div className={classes.login}>LOG IN</div>
+            )}
         </div>
     );
 };
