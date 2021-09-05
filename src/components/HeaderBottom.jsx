@@ -24,8 +24,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const HeaderBottom = ({ menuList }) => {
-    const user = true;
-
     const classes = useStyles();
     const preventDefault = (event) => event.preventDefault();
 
@@ -40,8 +38,6 @@ const HeaderBottom = ({ menuList }) => {
                     {item.menuItem}
                 </Link>
             ))}
-
-            {user ? <div className={classes.login}>ADMIN</div> : ''}
         </div>
     );
 };
