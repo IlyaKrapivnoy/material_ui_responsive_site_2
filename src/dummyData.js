@@ -1,7 +1,7 @@
 export const menuList = [
     {
         id: 1,
-        menuItem: 'Technology',
+        menuItem: 'Main',
     },
     {
         id: 2,

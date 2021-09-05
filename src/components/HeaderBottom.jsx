@@ -41,11 +41,7 @@ const HeaderBottom = ({ menuList }) => {
                 </Link>
             ))}
 
-            {user ? (
-                <div className={classes.login}>LOG OUT</div>
-            ) : (
-                <div className={classes.login}>LOG IN</div>
-            )}
+            {user ? <div className={classes.login}>ADMIN</div> : ''}
         </div>
     );
 };
