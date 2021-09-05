@@ -1,4 +1,4 @@
-import { makeStyles, Typography } from '@material-ui/core';
+import { makeStyles, Typography, CircularProgress } from '@material-ui/core';
 import { posts } from '../dummyData';
 import ReactPaginate from 'react-paginate';
 import { useState, useEffect } from 'react';
@@ -21,6 +21,11 @@ const useStyles = makeStyles((theme) => ({
     post: {
         padding: '26px 0',
     },
+    postTop: {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+    },
     postTitle: {
         marginBottom: 10,
     },
@@ -28,16 +33,13 @@ const useStyles = makeStyles((theme) => ({
         margin: '10px 0',
         fontSize: 16,
     },
-    postAuthor: {
-        color: '#1976d2',
-    },
 }));
 
 const Feed = () => {
     const [feedPosts, setFeedPosts] = useState([]);
     useEffect(() => {
         axios
-            .get('https://jsonplaceholder.typicode.com/posts')
+            .get('https://jsonplaceholder.typicode.com/comments')
             .then((res) => {
                 console.log(res);
                 setFeedPosts(res.data);
@@ -53,23 +55,30 @@ const Feed = () => {
     const postsPerPage = 7;
     const pagesVisited = pageNumber * postsPerPage;
 
-    const displayUsers = feedPosts
+    const displayPosts = feedPosts
         .slice(pagesVisited, pagesVisited + postsPerPage)
         .map((post) => {
             return (
                 <div className={classes.post}>
-                    <Typography variant='h5' className={classes.postTitle}>
-                        {post.title}
-                    </Typography>
-                    <Typography variant='caption' className={classes.postInfo}>
-                        {post.postDate} by{' '}
-                        <span className={classes.postAuthor}>
-                            {post.postAuthor}
-                        </span>
-                    </Typography>
-                    <Typography variant='body2' className={classes.postText}>
-                        {post.body}
-                    </Typography>
+                    <div className={classes.postTop}>
+                        <Typography variant='h5' className={classes.postTitle}>
+                            {post.name}
+                        </Typography>
+                        <Typography
+                            variant='caption'
+                            className={classes.postInfo}
+                        >
+                            {post.email}
+                        </Typography>
+                    </div>
+                    <div className={classes.postBottom}>
+                        <Typography
+                            variant='body2'
+                            className={classes.postText}
+                        >
+                            {post.body}
+                        </Typography>
+                    </div>
                 </div>
             );
         });
@@ -86,7 +95,7 @@ const Feed = () => {
                 From the firehose
             </Typography>
             <div className={classes.feedWrapper}>
-                <div className={classes.feedPosts}>{displayUsers}</div>
+                <div className={classes.feedPosts}>{displayPosts}</div>
                 <div className={classes.feedPagination}>
                     <ReactPaginate
                         previousLabel={'Prev'}
