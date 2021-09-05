@@ -11,6 +11,12 @@ const useStyles = makeStyles((theme) => ({
         borderBottom: '1px solid rgba(0, 0, 0, 0.23)',
         paddingBottom: 6,
     },
+    feedWrapper: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        minHeight: '720px',
+    },
     post: {
         padding: '26px 0',
     },
@@ -30,7 +36,7 @@ const Feed = () => {
     const classes = useStyles();
     const [pageNumber, setPageNumber] = useState(0);
 
-    const postsPerPage = 10;
+    const postsPerPage = 7;
     const pagesVisited = pageNumber * postsPerPage;
 
     const displayUsers = posts
@@ -65,18 +71,22 @@ const Feed = () => {
             <Typography variant='h6' className={classes.feedTitle}>
                 From the firehose
             </Typography>
-            {displayUsers}
-            <ReactPaginate
-                previousLabel={'Previous'}
-                nextLabel={'Next'}
-                pageCount={pageCount}
-                onPageChange={changePage}
-                containerClassName={'paginationBtns'}
-                previousClassName={'previousBtn'}
-                nextClassName={'nextBtn'}
-                disabledClassName={'paginationDisabled'}
-                activeClassName={'paginationActive'}
-            />
+            <div className={classes.feedWrapper}>
+                <div className={classes.feedPosts}>{displayUsers}</div>
+                <div className={classes.feedPagination}>
+                    <ReactPaginate
+                        previousLabel={'Prev'}
+                        nextLabel={'Next'}
+                        pageCount={pageCount}
+                        onPageChange={changePage}
+                        containerClassName={'paginationBtns'}
+                        previousClassName={'previousBtn'}
+                        nextClassName={'nextBtn'}
+                        disabledClassName={'paginationDisabled'}
+                        activeClassName={'paginationActive'}
+                    />
+                </div>
+            </div>
         </div>
     );
 };

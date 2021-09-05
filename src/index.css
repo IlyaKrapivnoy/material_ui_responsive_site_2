@@ -11,3 +11,37 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.paginationBtns {
+    display: flex;
+    list-style: none;
+}
+
+ul.paginationBtns {
+    padding: 0;
+    justify-content: center;
+}
+
+.paginationBtns > li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    margin: 8px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+}
+
+.nextBtn,
+.previousBtn {
+    /* background: transparent!important; */
+    font-weight: 700;
+}
+
+.paginationActive {
+    background-color: #1976d2;
+    color: #fff;
+}
