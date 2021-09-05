@@ -44,7 +44,7 @@ export const menuList = [
 export const posts = [
     {
         id: 1,
-        title: 'Post Title',
+        title: 'Web design standards 2021',
         postDate: 'Sep 1, 2021',
         postAuthor: 'Admin',
         postText:
@@ -52,7 +52,7 @@ export const posts = [
     },
     {
         id: 2,
-        title: 'Post Title',
+        title: 'Web vs real world',
         postDate: 'Sep 2, 2021',
         postAuthor: 'Hannah M',
         postText:
@@ -60,7 +60,7 @@ export const posts = [
     },
     {
         id: 3,
-        title: 'Post Title',
+        title: 'Post Irony',
         postDate: 'Sep 6, 2021',
         postAuthor: 'Scott J. Scott',
         postText:
@@ -68,7 +68,7 @@ export const posts = [
     },
     {
         id: 4,
-        title: 'Post Title',
+        title: 'Texts for SEO',
         postDate: 'Sep 14, 2021',
         postAuthor: 'Admin',
         postText:
@@ -76,7 +76,7 @@ export const posts = [
     },
     {
         id: 5,
-        title: 'Post Title',
+        title: 'Link is more than text',
         postDate: 'Sep 16, 2021',
         postAuthor: 'Bart S',
         postText:
@@ -84,7 +84,7 @@ export const posts = [
     },
     {
         id: 6,
-        title: 'Post Title',
+        title: 'Where is your post?',
         postDate: 'Sep 1, 2021',
         postAuthor: 'Admin',
         postText:

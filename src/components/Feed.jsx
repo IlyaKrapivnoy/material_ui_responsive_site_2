@@ -1,5 +1,7 @@
 import { makeStyles, Typography } from '@material-ui/core';
 import { posts } from '../dummyData';
+import ReactPaginate from 'react-paginate';
+import { useState } from 'react';
 
 const useStyles = makeStyles((theme) => ({
     feed: {
@@ -26,13 +28,15 @@ const useStyles = makeStyles((theme) => ({
 
 const Feed = () => {
     const classes = useStyles();
+    const [pageNumber, setPageNumber] = useState(0);
 
-    return (
-        <div className={classes.feed}>
-            <Typography variant='h6' className={classes.feedTitle}>
-                From the firehose
-            </Typography>
-            {posts.map((post) => (
+    const postsPerPage = 10;
+    const pagesVisited = pageNumber * postsPerPage;
+
+    const displayUsers = posts
+        .slice(pagesVisited, pagesVisited + postsPerPage)
+        .map((post) => {
+            return (
                 <div className={classes.post}>
                     <Typography variant='h5' className={classes.postTitle}>
                         {post.title}
@@ -47,7 +51,32 @@ const Feed = () => {
                         {post.postText}
                     </Typography>
                 </div>
-            ))}
+            );
+        });
+
+    const pageCount = Math.ceil(posts.length / postsPerPage);
+
+    const changePage = ({ selected }) => {
+        setPageNumber(selected);
+    };
+
+    return (
+        <div className={classes.feed}>
+            <Typography variant='h6' className={classes.feedTitle}>
+                From the firehose
+            </Typography>
+            {displayUsers}
+            <ReactPaginate
+                previousLabel={'Previous'}
+                nextLabel={'Next'}
+                pageCount={pageCount}
+                onPageChange={changePage}
+                containerClassName={'paginationBtns'}
+                previousClassName={'previousBtn'}
+                nextClassName={'nextBtn'}
+                disabledClassName={'paginationDisabled'}
+                activeClassName={'paginationActive'}
+            />
         </div>
     );
 };
