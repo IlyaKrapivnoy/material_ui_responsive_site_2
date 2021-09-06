@@ -1,5 +1,4 @@
 import {
-    Button,
     Card,
     CardActions,
     CardContent,
@@ -9,24 +8,25 @@ import {
 import ReactPaginate from 'react-paginate';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 const useStyles = makeStyles((theme) => ({
     feedWrapper: {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        minHeight: '520px',
+        minHeight: '420px',
     },
     feedUsers: {
         display: 'flex',
         flexWrap: 'wrap',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
     },
     userCard: {
         width: 275,
-        height: 160,
+        height: 100,
         display: 'flex',
-        flexDirection: 'column',
+        flexDirection: 'row',
         justifyContent: 'space-between',
         margin: 20,
     },
@@ -35,10 +35,13 @@ const useStyles = makeStyles((theme) => ({
         fontSize: 14,
     },
 
-    userCardButtons: {
+    userCardIcon: {
         display: 'flex',
-        justifyContent: 'space-between',
+        alignItems: 'flex-start',
         marginBottom: 12,
+    },
+    closeIcon: {
+        cursor: 'pointer',
     },
 }));
 
@@ -77,19 +80,20 @@ const CultureCardItem = () => {
                             <Typography color='textSecondary' gutterBottom>
                                 Name: {user.name}
                             </Typography>
-                            <Typography color='textSecondary' gutterBottom>
+                            <Typography
+                                color='textSecondary'
+                                gutterBottom
+                                style={{ fontSize: 12, color: '#000' }}
+                            >
                                 Email: {user.email}
                             </Typography>
                         </div>
                     </CardContent>
-                    <CardActions className={classes.userCardButtons}>
-                        <Button size='small'>CHECK?</Button>
-                        <Button
-                            size='small'
+                    <CardActions className={classes.userCardIcon}>
+                        <HighlightOffIcon
+                            className={classes.closeIcon}
                             onClick={() => handleDelete(user.id)}
-                        >
-                            Delete
-                        </Button>
+                        />
                     </CardActions>
                 </Card>
             );
