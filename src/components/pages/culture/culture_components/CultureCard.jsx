@@ -25,14 +25,15 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const CultureCard = ({ title, img }) => {
+const CultureCard = ({ title, img, id }) => {
     const classes = useStyles();
 
     return (
         <div>
             <Card className={classes.card}>
                 <CardActionArea>
-                    <CardMedia className={classes.media} image={img} />
+                    <CardMedia className={classes.media} image={img} id={id} />
+
                     <CardContent>
                         <Typography gutterBottom variant='h5' component='h2'>
                             {title}

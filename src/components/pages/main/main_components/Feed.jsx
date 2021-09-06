@@ -38,7 +38,7 @@ const Feed = () => {
     const [feedPosts, setFeedPosts] = useState([]);
     useEffect(() => {
         axios
-            .get('https://jsonplaceholder.typicode.com/comments')
+            .get('https://jsonplaceholder.typicode.com/posts')
             .then((res) => {
                 console.log(res);
                 setFeedPosts(res.data);
