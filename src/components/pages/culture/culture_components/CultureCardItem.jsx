@@ -62,6 +62,11 @@ const CultureCardItem = () => {
     const usersPerPage = 6;
     const pagesVisited = userNumber * usersPerPage;
 
+    const handleDelete = (id) => {
+        const newUsers = feedUsers.filter((user) => user.id !== id);
+        setFeedUsers(newUsers);
+    };
+
     const displayPosts = feedUsers
         .slice(pagesVisited, pagesVisited + usersPerPage)
         .map((user) => {
@@ -79,7 +84,12 @@ const CultureCardItem = () => {
                     </CardContent>
                     <CardActions className={classes.userCardButtons}>
                         <Button size='small'>CHECK?</Button>
-                        <Button size='small'>Delete</Button>
+                        <Button
+                            size='small'
+                            onClick={() => handleDelete(user.id)}
+                        >
+                            Delete
+                        </Button>
                     </CardActions>
                 </Card>
             );
