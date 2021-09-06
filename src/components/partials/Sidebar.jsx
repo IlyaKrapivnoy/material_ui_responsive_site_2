@@ -116,7 +116,7 @@ const Sidebar = () => {
                 </Typography>
                 <div className={classes.archiveList}>
                     {links.map((link) => (
-                        <Typography className={classes.linksList}>
+                        <Typography className={classes.linksList} key={link.id}>
                             <Link
                                 href='#'
                                 onClick={preventDefault}

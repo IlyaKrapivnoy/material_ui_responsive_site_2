@@ -1,6 +1,4 @@
 import { makeStyles, Typography } from '@material-ui/core';
-// import { posts } from '../../../../dummyData';
-import { posts } from '../../../../dummyData';
 import ReactPaginate from 'react-paginate';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -60,7 +58,7 @@ const Feed = () => {
         .slice(pagesVisited, pagesVisited + postsPerPage)
         .map((post) => {
             return (
-                <div className={classes.post}>
+                <div className={classes.post} key={post.id}>
                     <div className={classes.postTop}>
                         <Typography variant='h5' className={classes.postTitle}>
                             {post.name}
