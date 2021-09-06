@@ -1,5 +1,4 @@
 import { makeStyles, Typography } from '@material-ui/core';
-import { posts } from '../../../../dummyData';
 import ReactPaginate from 'react-paginate';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -39,7 +38,7 @@ const Feed = () => {
     const [feedPosts, setFeedPosts] = useState([]);
     useEffect(() => {
         axios
-            .get('https://jsonplaceholder.typicode.com/comments')
+            .get('https://jsonplaceholder.typicode.com/posts')
             .then((res) => {
                 console.log(res);
                 setFeedPosts(res.data);
@@ -59,7 +58,7 @@ const Feed = () => {
         .slice(pagesVisited, pagesVisited + postsPerPage)
         .map((post) => {
             return (
-                <div className={classes.post}>
+                <div className={classes.post} key={post.id}>
                     <div className={classes.postTop}>
                         <Typography variant='h5' className={classes.postTitle}>
                             {post.name}
@@ -83,7 +82,7 @@ const Feed = () => {
             );
         });
 
-    const pageCount = Math.ceil(posts.length / postsPerPage);
+    const pageCount = Math.ceil(feedPosts.length / postsPerPage);
 
     const changePage = ({ selected }) => {
         setPageNumber(selected);

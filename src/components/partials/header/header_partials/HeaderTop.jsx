@@ -1,16 +1,11 @@
-import {
-    Button,
-    Link,
-    makeStyles,
-    Snackbar,
-    Typography,
-} from '@material-ui/core';
+import { Button, makeStyles, Snackbar, Typography } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import MuiAlert from '@material-ui/lab/Alert';
 import { useState } from 'react';
 import SignupButton from './SignupButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
+import { Link } from 'react-router-dom';
 
 function Alert(props) {
     return <MuiAlert elevation={6} variant='filled' {...props} />;
@@ -115,8 +110,10 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         justifyContent: 'flex-end',
         marginRight: 30,
-        color: 'rgba(0, 0, 0, 0.54)',
         fontSize: 18,
+    },
+    mobileMenuLink: {
+        color: 'rgba(0, 0, 0, 0.54)',
     },
     menuLeftCloseIcon: {
         padding: '15px 0 0 15px',
@@ -124,7 +121,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const HeaderTop = ({ preventDefault, menuList }) => {
+const HeaderTop = ({ preventDefault }) => {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     const [openSearch, setOpenSearch] = useState(false);
@@ -157,7 +154,78 @@ const HeaderTop = ({ preventDefault, menuList }) => {
                     />
                 </div>
                 <div className={classes.mobileMenuList}>
-                    {menuList.map((item) => (
+                    <ul>
+                        <li className={classes.mobileMenuItem}>
+                            <Link to='/' className={classes.mobileMenuLink}>
+                                Main
+                            </Link>
+                        </li>
+                        <li className={classes.mobileMenuItem}>
+                            <Link
+                                to='/culture'
+                                className={classes.mobileMenuLink}
+                            >
+                                Culture
+                            </Link>
+                        </li>
+                        <li className={classes.mobileMenuItem}>
+                            <Link
+                                to='/business'
+                                className={classes.mobileMenuLink}
+                            >
+                                Business
+                            </Link>
+                        </li>
+                        <li className={classes.mobileMenuItem}>
+                            <Link
+                                to='/politics'
+                                className={classes.mobileMenuLink}
+                            >
+                                Politics
+                            </Link>
+                        </li>
+                        <li className={classes.mobileMenuItem}>
+                            <Link
+                                to='/opinion'
+                                className={classes.mobileMenuLink}
+                            >
+                                Opinion
+                            </Link>
+                        </li>
+                        <li className={classes.mobileMenuItem}>
+                            <Link
+                                to='/science'
+                                className={classes.mobileMenuLink}
+                            >
+                                Science
+                            </Link>
+                        </li>
+                        <li className={classes.mobileMenuItem}>
+                            <Link
+                                to='/health'
+                                className={classes.mobileMenuLink}
+                            >
+                                Health
+                            </Link>
+                        </li>
+                        <li className={classes.mobileMenuItem}>
+                            <Link
+                                to='/style'
+                                className={classes.mobileMenuLink}
+                            >
+                                Style
+                            </Link>
+                        </li>
+                        <li className={classes.mobileMenuItem}>
+                            <Link
+                                to='/travel'
+                                className={classes.mobileMenuLink}
+                            >
+                                Travel
+                            </Link>
+                        </li>
+                    </ul>
+                    {/* {menuList.map((item) => (
                         <Link
                             href='#'
                             onClick={preventDefault}
@@ -165,7 +233,7 @@ const HeaderTop = ({ preventDefault, menuList }) => {
                         >
                             {item.menuItem}
                         </Link>
-                    ))}
+                    ))} */}
                 </div>
             </div>
         );
