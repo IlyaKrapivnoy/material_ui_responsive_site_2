@@ -30,9 +30,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const HeaderBottom = ({ menuList }) => {
-    const user = true;
-
+const HeaderBottom = () => {
     const classes = useStyles();
 
     return (

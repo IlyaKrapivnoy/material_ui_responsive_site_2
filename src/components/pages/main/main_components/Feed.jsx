@@ -1,4 +1,5 @@
 import { makeStyles, Typography } from '@material-ui/core';
+// import { posts } from '../../../../dummyData';
 import { posts } from '../../../../dummyData';
 import ReactPaginate from 'react-paginate';
 import { useState, useEffect } from 'react';
@@ -83,7 +84,7 @@ const Feed = () => {
             );
         });
 
-    const pageCount = Math.ceil(posts.length / postsPerPage);
+    const pageCount = Math.ceil(feedPosts.length / postsPerPage);
 
     const changePage = ({ selected }) => {
         setPageNumber(selected);
