@@ -22,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignupButton() {
-
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     const [user, setUser] = useState(true);

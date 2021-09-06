@@ -6,9 +6,9 @@ import {
     makeStyles,
     Container,
 } from '@material-ui/core';
-import CardImage1 from '../images/card1.jpeg';
-import CardImage2 from '../images/card2.jpeg';
-import SmallCard from '../images/smallCard.jpeg';
+import CardImage1 from '../../../../images/card1.jpeg';
+import CardImage2 from '../../../../images/card2.jpeg';
+import SmallCard from '../../../../images/smallCard.jpeg';
 
 const useStyles = makeStyles((theme) => ({
     cards: {
