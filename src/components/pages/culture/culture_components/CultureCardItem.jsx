@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-between',
+        [theme.breakpoints.down('sm')]: {
+            justifyContent: 'center',
+        },
     },
     userCard: {
         width: 275,
@@ -32,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     },
 
     title: {
-        fontSize: 14,
+        fontSize: 13,
     },
 
     userCardIcon: {
@@ -74,7 +77,7 @@ const CultureCardItem = () => {
         .slice(pagesVisited, pagesVisited + usersPerPage)
         .map((user) => {
             return (
-                <Card className={classes.userCard}>
+                <Card className={classes.userCard} key={user.id}>
                     <CardContent>
                         <div className={classes.title}>
                             <Typography color='textSecondary' gutterBottom>
