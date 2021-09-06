@@ -1,5 +1,5 @@
 import { makeStyles, Typography } from '@material-ui/core';
-import ImageBanner from '../../../../images/cultureBanner.jpeg';
+import ImageBanner from '../../../../images/cultureCards/cultureBanner.jpeg';
 
 const useStyles = makeStyles((theme) => ({
     banner: {
