@@ -1,5 +1,5 @@
 import { Container, Typography, makeStyles } from '@material-ui/core';
-import Image from '../images/bg-0.jpeg';
+import Image from '../../../../images/bg-0.jpeg';
 
 const useStyles = makeStyles((theme) => ({
     banner: {

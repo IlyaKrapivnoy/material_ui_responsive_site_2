@@ -2,7 +2,7 @@ import { Link, makeStyles, Paper, Typography } from '@material-ui/core';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import FacebookIcon from '@material-ui/icons/Facebook';
-import { links } from '../dummyData';
+import { links } from '../../dummyData';
 
 const useStyles = makeStyles((theme) => ({
     sidebar: {

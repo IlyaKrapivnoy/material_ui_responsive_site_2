@@ -1,6 +1,6 @@
 import { Container, Grid, makeStyles } from '@material-ui/core';
 import Feed from './Feed';
-import Sidebar from './Sidebar';
+import Sidebar from '../../../partials/Sidebar';
 
 const useStyles = makeStyles((theme) => ({
     mainContent: {

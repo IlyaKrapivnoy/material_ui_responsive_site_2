@@ -1,5 +1,5 @@
 import { makeStyles, Typography } from '@material-ui/core';
-import { posts } from '../dummyData';
+import { posts } from '../../../../dummyData';
 import ReactPaginate from 'react-paginate';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
