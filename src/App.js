@@ -5,7 +5,7 @@ import Footer from './components/partials/Footer';
 import Main from './components/pages/main/Main';
 import Culture from './components/pages/culture/Culture';
 import Business from './components/pages/business/Business';
-import Politics from './components/pages/politics/Politics';
+import BusinessPosts from './components/pages/business_posts/BusinessPosts';
 import Opinion from './components/pages/opinion/Opinion';
 import Science from './components/pages/science/Science';
 import Health from './components/pages/health/Health';
@@ -27,8 +27,8 @@ function App() {
                     <Route path='/business'>
                         <Business />
                     </Route>
-                    <Route path='/politics'>
-                        <Politics />
+                    <Route path='/business-posts'>
+                        <BusinessPosts />
                     </Route>
                     <Route path='/opinion'>
                         <Opinion />

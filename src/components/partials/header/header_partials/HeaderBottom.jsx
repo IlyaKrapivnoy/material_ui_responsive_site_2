@@ -47,12 +47,12 @@ const HeaderBottom = () => {
             </li>
             <li className={classes.headerBottomLi}>
                 <Link to='/business' className={classes.headerBottomLink}>
-                    Business
+                    Business Form
                 </Link>
             </li>
             <li className={classes.headerBottomLi}>
-                <Link to='/politics' className={classes.headerBottomLink}>
-                    Politics
+                <Link to='/business-posts' className={classes.headerBottomLink}>
+                    Business Posts
                 </Link>
             </li>
             <li className={classes.headerBottomLi}>
